@@ -1,8 +1,7 @@
 import Test
 
 test = Test.Test('example_test.json')
-for category in test.categories:
-    category.generate_questions(1)
+test.generate_test(1)
 
 for category in test.categories:
     print(category.name)
@@ -12,5 +11,5 @@ for category in test.categories:
             print(choice)
         question.user_answer = input("Enter your answer:")
 
-test.grade()
-test.display_score()
+test.grade_test()
+test.display_test_score()
