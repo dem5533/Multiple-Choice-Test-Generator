@@ -36,7 +36,7 @@ class GUI:
 
             row += 1
             category_label = ttk.Label(self.test_window)
-            category_label.configure(text="\n" + category.name, font=(FONT, CATEGORY_FONT_SIZE))
+            category_label.configure(text=category.name, font=(FONT, CATEGORY_FONT_SIZE), padding=5)
             category_label.grid(row=row)
 
             for question in category.questions:
@@ -54,15 +54,15 @@ class GUI:
 
         self.test.grade_test()
 
-        grade = "\nOverall Score: " + str(self.test.score) + "%"
-        test_grade_label = ttk.Label(self.test_window, text=grade)
+        grade_text = "Overall Score: " + str(self.test.score) + "%"
+        test_grade_label = ttk.Label(self.test_window, text=grade_text, padding=5, font=("Arial", 16))
         test_grade_label.grid()
 
-        breakdown_label = ttk.Label(self.test_window, text="Category Breakdown:")
+        breakdown_label = ttk.Label(self.test_window, text="Category Breakdown:", font=("Arial", 14))
         breakdown_label.grid()
 
         for category in self.test.categories:
 
             category_grade_text = category.name + " Score: " + str(category.score) + "%"
-            category_grade_label = ttk.Label(self.test_window, text=category_grade_text)
+            category_grade_label = ttk.Label(self.test_window, text=category_grade_text, padding=1, font=("Arial", 12))
             category_grade_label.grid()
