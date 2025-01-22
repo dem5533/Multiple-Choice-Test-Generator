@@ -7,41 +7,23 @@
         {
           "question_text": "What is the color of the sky?",
           "choices": [
-            {
-              "A": "Red"
-            },
-            {
-              "B": "Yellow"
-            },
-            {
-              "C": "Green"
-            },
-            {
-              "D": "Blue"
-            }
+              "A: Red",
+              "B: Yellow",
+              "C: Green",
+              "D: Blue"
           ],
-          "answer": "D"
+          "answer": "D: Blue"
         },
         {
           "question_text": "What is the acceleration due to gravity?",
           "choices": [
-            {
-              "A": "0"
-            },
-            {
-              "B": "98"
-            },
-            {
-              "C": "5"
-            },
-            {
-              "D": "10"
-            },
-            {
-              "E": "9.8"
-            }
+              "A: 0",
+              "B: 98",
+              "C: 5",
+              "D: 10",
+              "E: 9.8"
           ],
-          "answer": "E"
+          "answer": "E: 9.8"
         }
       ]
     },
@@ -51,38 +33,22 @@
         {
           "question_text": "What category of word is 'Run'?",
           "choices": [
-            {
-              "A": "Verb"
-            },
-            {
-              "B": "Noun"
-            },
-            {
-              "C": "Adverb"
-            },
-            {
-              "D":"Pronoun"
-            }
+              "A: Verb",
+              "B: Noun",
+              "C: Adverb",
+              "D: Pronoun"
           ],
-          "answer": "A"
+          "answer": "A: Verb"
         },
         {
           "question_text": "What is the past-tense form of 'Run'?",
           "choices": [
-            {
-              "A": "Run"
-            },
-            {
-              "B": "Runned"
-            },
-            {
-              "C": "Ran"
-            },
-            {
-              "D": "Ranned"
-            }
+              "A: Run",
+              "B: Runned",
+              "C: Ran",
+              "D: Ranned"
           ],
-          "answer": "C"
+          "answer": "C: Ran"
         }
       ]
     },
@@ -92,38 +58,22 @@
         {
           "question_text": "What is 2+2?",
           "choices": [
-            {
-              "A": "4"
-            },
-            {
-              "B": "5"
-            },
-            {
-              "C": "6"
-            },
-            {
-              "D": "7"
-            }
+              "A: 4",
+              "B: 5",
+              "C: 6",
+              "D: 7"
           ],
-          "answer": "B"
+          "answer": "B: 5"
         },
         {
           "question_text": "What is the square of 1?",
           "choices": [
-            {
-              "A": "0"
-            },
-            {
-              "B": "1"
-            },
-            {
-              "C": "2"
-            },
-            {
-              "D": "3"
-            }
+              "A: 0",
+              "B: 1",
+              "C: 2",
+              "D: 3"
           ],
-          "answer": "B"
+          "answer": "B: 1"
         }
       ]
     },
@@ -133,32 +83,20 @@
         {
           "question_text": "Roughly how many years ago was the world created?",
           "choices": [
-            {
-              "A": "4 Thousand"
-            },
-            {
-              "B": "4 Million"
-            },
-            {
-              "C": "4 Billion"
-            },
-            {
-              "D": "4 Trillion"
-            }
+              "A: 4 Thousand",
+              "B: 4 Million",
+              "C: 4 Billion",
+              "D: 4 Trillion"
           ],
-          "answer": "A"
+          "answer": "A: 4 Thousand"
         },
         {
           "question_text": "True/False: The dinosaurs existed between 50 and 250 million years ago.",
           "choices": [
-            {
-              "A": "True"
-            },
-            {
-              "B": "False"
-            }
+              "A: True",
+              "B: False"
           ],
-          "answer": "B"
+          "answer": "B: False"
         }
       ]
     }

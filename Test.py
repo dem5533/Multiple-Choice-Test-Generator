@@ -16,6 +16,7 @@ class Question:
         self.correct_answer = data["answer"]
         self.user_answer = None
         self.correct = None
+        self.answer_box = None
 
     def __str__(self):
         return f'Question({self.text},{self.choices},{self.correct_answer},{self.user_answer},{self.correct})'
@@ -25,6 +26,7 @@ class Question:
         Return:
             bool: true if answer is correct, false otherwise
         """
+        self.user_answer = self.answer_box.get()
         if self.correct_answer == self.user_answer:
             self.correct = True
         else:
@@ -62,13 +64,15 @@ class Category:
             if question.grade_question():
                 self.correct += 1
 
-    def generate_questions(self, number):
+    def generate_questions(self, number=None):
         """
         Randomly generates what questions to use from questions in pool.
 
         Args:
             number (int): The number of questions to generate.
         """
+        if number is None:
+            number = len(self.pool)
         if number > len(self.pool):
             raise ValueError(
                 f'Number of questions requested ({number}) is greater than the pool size ({len(self.pool)})')
@@ -113,7 +117,7 @@ class Test:
             category.calculate_score()
             self.correct += category.correct
             self.total += len(category.questions)
-        self.score = round(self.correct / self.total, 2) * 100
+        self.score = (self.correct / self.total) * 100
 
     def display_test_score(self):
         print("\nScores:")
@@ -133,8 +137,18 @@ class Test:
                 for category in data["Categories"]:
                     self.categories.append(Category(category))
 
-    def generate_test(self, number):
-        if isinstance(number, int):
+    def generate_test(self, number=None):
+        """
+        Generates questions for test based on number of questions requested per category.
+
+        Arguments:
+            number (int): The number of questions per category.
+            number (ist[int]): List of no. of questions to add per category.
+        """
+        if number is None:
+            for category in self.categories:
+                category.generate_questions()
+        elif isinstance(number, int):
             for category in self.categories:
                 category.generate_questions(number)
         elif isinstance(number, list):
