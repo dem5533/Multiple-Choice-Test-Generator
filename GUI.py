@@ -128,8 +128,7 @@ class Test_Frame:
 
         self.prev_button = ttk.Button(self.nav_frame,
                                       text="Previous",
-                                      command=self.prev_question,
-                                      sticky=)
+                                      command=self.prev_question)
         self.prev_button.grid(row=0, column=0)
 
         self.next_button = ttk.Button(self.nav_frame,
