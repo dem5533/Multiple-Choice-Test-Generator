@@ -1,20 +1,11 @@
-import Test
+from tkinter import Tk
+from Test import Test
 import GUI
 
-# test = Test.Test('example_test.json')
-# test.generate_test(1)
-#
-# for category in test.categories:
-#     print(category.name)
-#     for question in category.questions:
-#         print(question.text)
-#         for choice in question.choices:
-#             print(choice)
-#         question.user_answer = input("Enter your answer:")
-#
-# test.grade_test()
-# test.display_test_score()
+test = Test('example_test.json')
+window = Tk()
+window.title("Multiple Choice Test Generator")
 
-if __name__ == '__main__':
-    test = Test.Test('example_test.json')
-    GUI.GUI(test)
+GUI.Init_Frame(window, test)
+
+window.mainloop()

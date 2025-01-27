@@ -26,7 +26,6 @@ class Question:
         Return:
             bool: true if answer is correct, false otherwise
         """
-        self.user_answer = self.answer_box.get()
         if self.correct_answer == self.user_answer:
             self.correct = True
         else:
@@ -49,6 +48,7 @@ class Category:
     def __init__(self, data):
         self.name = data["Name"]
         self.correct = 0
+        self.total = 0
         self.questions = []
         self.pool = []
         self.score = 0
@@ -81,12 +81,14 @@ class Category:
             nums = random.sample(range(len(self.pool)), number)
             for num in nums:
                 self.questions.append(self.pool[num])
+                self.total += 1
 
     def calculate_score(self):
         self.score = round(self.correct / len(self.questions), 2) * 100
 
-    def display_category_score(self):
-        print(self.name + ": " + str(self.correct) + "/" + str(len(self.questions)) + " = " + str(self.score) + "%")
+    # DEPRECATED
+    # def display_category_score(self):
+    #     print(self.name + ": " + str(self.correct) + "/" + str(len(self.questions)) + " = " + str(self.score) + "%")
 
 
 class Test:
@@ -99,6 +101,7 @@ class Test:
         total (int): The total number of questions.
         correct (int): The total number of questions gotten correct.
         score (float): The score of the test.
+        template_category_sizes (Dict{Str:[int]}): A dictionary of
     """
     def __init__(self, filepath):
         self.name = ""
@@ -106,6 +109,7 @@ class Test:
         self.total = 0
         self.correct = 0
         self.score = 0
+        self.template_category_sizes = {}
         self.load_test(filepath)
 
     def __str__(self):
@@ -116,14 +120,14 @@ class Test:
             category.grade_category()
             category.calculate_score()
             self.correct += category.correct
-            self.total += len(category.questions)
         self.score = (self.correct / self.total) * 100
 
-    def display_test_score(self):
-        print("\nScores:")
-        for category in self.categories:
-            category.display_category_score()
-        print("Total: " + str(self.correct) + "/" + str(self.total) + " = " + str(self.score) + "%")
+    # DEPRECATED
+    # def display_test_score(self):
+    #     print("\nScores:")
+    #     for category in self.categories:
+    #         category.display_category_score()
+    #     print("Total: " + str(self.correct) + "/" + str(self.total) + " = " + str(self.score) + "%")
 
     def load_test(self, filepath):
         with open(filepath, "r") as f:
@@ -134,8 +138,15 @@ class Test:
                 print("Error loading .json")
             else:
                 self.name = data["Name"]
+                for template in data["Templates"]:
+                    self.template_category_sizes.update(template)
                 for category in data["Categories"]:
                     self.categories.append(Category(category))
+                questions_per_category = []
+                for category in self.categories:
+                    questions_per_category.append(len(category.pool))
+
+                self.template_category_sizes.update({"Full": questions_per_category})
 
     def generate_test(self, number=None):
         """
@@ -151,11 +162,13 @@ class Test:
         elif isinstance(number, int):
             for category in self.categories:
                 category.generate_questions(number)
+                self.total += len(category.questions)
         elif isinstance(number, list):
             if len(number) != len(self.categories):
                 raise ValueError("Number of categories requested does not match number of categories available")
             else:
                 for category, num in zip(self.categories, number):
                     category.generate_questions(num)
+                    self.total += len(category.questions)
         else:
             raise ValueError("Number of questions per category must be an integer or a list of integers")
