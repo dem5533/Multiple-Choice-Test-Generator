@@ -2,7 +2,7 @@ from tkinter import Tk
 from Test import Test
 import GUI
 
-test = Test('example_test.json')
+test = Test('test.json')
 window = Tk()
 window.title("Multiple Choice Test Generator")
 

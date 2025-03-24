@@ -1,0 +1,195 @@
+{
+  "Name":"Example Test",
+  "Templates": [
+    {
+      "Short":  [1, 1, 1, 1]
+    },
+    {
+      "Medium": [2, 2, 2, 2]
+    },
+    {
+      "Long":   [3, 3, 3, 3]
+    }
+  ],
+  "Categories":[
+    {
+      "Name": "Science",
+      "Questions": [
+        {
+          "question_text": "What is the color of the sky?",
+          "choices": [
+              "A: Red",
+              "B: Yellow",
+              "C: Green",
+              "D: Blue"
+          ],
+          "answer": "D: Blue"
+        },
+        {
+          "question_text": "What is the acceleration due to gravity?",
+          "choices": [
+              "A: 0",
+              "B: 98",
+              "C: 5",
+              "D: 10",
+              "E: 9.8"
+          ],
+          "answer": "E: 9.8"
+        },
+        {
+          "question_text": "What does the constant 'c' represent?",
+          "choices": [
+            "A: The speed of light",
+            "B: The number of molecules in 1g of pure hydrogen",
+            "C: The speed of sound",
+            "D: The number of stars in the universe"
+          ],
+          "answer": "A: The speed of light"
+        },
+        {
+          "question_text": "What atoms are in a water molecule?",
+          "choices": [
+            "A: Hydrogen and Carbon",
+            "B: Sodium and Chlorine",
+            "C: Hydrogen and Oxygen",
+            "D: Pure Nitrogen"
+          ],
+          "answer": "C: Hydrogen and Oxygen"
+        }
+      ]
+    },
+    {
+      "Name": "English",
+      "Questions": [
+        {
+          "question_text": "What category of word is 'Run'?",
+          "choices": [
+              "A: Verb",
+              "B: Noun",
+              "C: Adverb",
+              "D: Pronoun"
+          ],
+          "answer": "A: Verb"
+        },
+        {
+          "question_text": "What is the past-tense form of 'Run'?",
+          "choices": [
+              "A: Run",
+              "B: Runned",
+              "C: Ran",
+              "D: Ranned"
+          ],
+          "answer": "C: Ran"
+        },
+        {
+          "question_text": "Who wrote the 'Tell-tale Heart'?",
+          "choices": [
+            "A: Rene Descartes",
+            "B: Edgar Allan Poe",
+            "C: H.P. Lovecraft",
+            "D: Alexander Hamilton"
+          ],
+          "answer": "B: Edgar Allan Poe"
+        },
+        {
+          "question_text": "I before 'e' accept after _",
+          "choices": [
+            "A: 'a'",
+            "B: 'b'",
+            "C: 'c'",
+            "D: 'd'"
+          ],
+          "answer": "C: 'c'"
+        }
+      ]
+    },
+    {
+      "Name": "Math",
+      "Questions": [
+        {
+          "question_text": "What is 2+2?",
+          "choices": [
+              "A: 4",
+              "B: 5",
+              "C: 6",
+              "D: 7"
+          ],
+          "answer": "A: 4"
+        },
+        {
+          "question_text": "What is the square of 1?",
+          "choices": [
+              "A: 0",
+              "B: 1",
+              "C: 2",
+              "D: 3"
+          ],
+          "answer": "B: 1"
+        },
+        {
+          "question_text": "What is 2x2?",
+          "choices": [
+              "A: 4",
+              "B: 5",
+              "C: 6",
+              "D: 7"
+          ],
+          "answer": "A: 4"
+        },
+        {
+          "question_text": "What is the square root of 1?",
+          "choices": [
+              "A: 0",
+              "B: 1",
+              "C: 2",
+              "D: 3"
+          ],
+          "answer": "B: 1"
+        }
+      ]
+    },
+    {
+      "Name": "History",
+      "Questions": [
+        {
+          "question_text": "Roughly how many years ago was the world created?",
+          "choices": [
+              "A: 4 Thousand",
+              "B: 4 Million",
+              "C: 4 Billion",
+              "D: 4 Trillion"
+          ],
+          "answer": "C: 4 Billion"
+        },
+        {
+          "question_text": "True/False: The dinosaurs existed between 50 and 250 million years ago.",
+          "choices": [
+              "A: True",
+              "B: False"
+          ],
+          "answer": "A: True"
+        },
+        {
+          "question_text": "What year was the United States Declaration of Independence signed?",
+          "choices": [
+            "A: 1676",
+            "B: 1776",
+            "C: 1876",
+            "D: 1976"
+          ],
+          "answer": "B: 1776"
+        },
+        {
+          "question_text": "What year was Jesus born?",
+          "choices": [
+            "A: 500 BC",
+            "B: 50 BC",
+            "C: 5 BC",
+            "D: 0 AD"
+          ],
+          "answer": "D: 0 AD"
+        }
+      ]
+    }
+  ]
+}

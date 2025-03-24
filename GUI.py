@@ -149,12 +149,16 @@ class Test_Frame:
             r.grid()
 
     def next_question(self):
-        self.questions[self.question_index].user_answer = self.response.get()
-        self.question_frame.destroy()
-        self.question_index += 1
-        if self.question_index == len(self.questions) - 1:
-            self.next_button.configure(text="Submit", command=self.submit_test)
-        self.display_question(self.questions[self.question_index])
+        if self.response.get() is None:
+            mb.showwarning(title="Warning!",
+                           message="Please select an answer before moving on.")
+        else:
+            self.questions[self.question_index].user_answer = self.response.get()
+            self.question_frame.destroy()
+            self.question_index += 1
+            if self.question_index == len(self.questions) - 1:
+                self.next_button.configure(text="Submit", command=self.submit_test)
+            self.display_question(self.questions[self.question_index])
 
     def prev_question(self):
         if self.question_index == 0:

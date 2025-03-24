@@ -159,6 +159,7 @@ class Test:
         if number is None:
             for category in self.categories:
                 category.generate_questions()
+                self.total += len(category.questions)
         elif isinstance(number, int):
             for category in self.categories:
                 category.generate_questions(number)
