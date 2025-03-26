@@ -184,28 +184,113 @@ class Score_Window:
         self.root = root
         self.test = test
 
+        self.categories = []
+        for category in test.categories:
+            self.categories.append(category)
+        self.category_index = 0
+
         self.score_frame = ttk.Frame(self.root, padding=5, borderwidth=5, relief=tk.SOLID)
         self.score_frame.pack()
-        self.display_score()
 
-    def display_score(self):
+        self.display_frame = None
+        self.nav_frame = None
+        self.next_button = None
+        self.prev_button = None
 
-        score_label = ttk.Label(self.score_frame,
+        self.display_score_overview()
+
+    def display_score_overview(self):
+
+        self.display_frame = ttk.Frame(self.score_frame, padding=5)
+        self.display_frame.grid(row=0, column=0)
+
+        score_label = ttk.Label(self.display_frame,
                                 text="Overall Score: " + str(self.test.score) + "%",
                                 font=("Arial", 20))
         score_label.grid()
 
-        for category in self.test.categories:
-            category_label = ttk.Label(self.score_frame,
+        for category in self.categories:
+            category_label = ttk.Label(self.display_frame,
                                        text=category.name + ": " + str(category.score) + "%",
                                        font=("Arial", 15))
             category_label.grid()
 
-            for question in category.questions:
-                question_label = ttk.Label(self.score_frame, font=("Arial", 10))
-                if question.user_answer == question.correct_answer:
-                    question_label.configure(text=question.text + ": Correct - " + question.user_answer)
-                else:
-                    question_label.configure(text=question.text + ": Wrong - \nYour answer: " +
-                                             question.user_answer + " - Correct answer: " + question.correct_answer)
-                question_label.grid()
+        self.nav_frame = ttk.Frame(self.score_frame, padding=5)
+        self.nav_frame.grid(row=1, column=0)
+
+        breakdown_button = ttk.Button(self.nav_frame,
+                                      text="Question Breakdown",
+                                      command=self.init_question_breakdown)
+        breakdown_button.pack()
+
+    def init_question_breakdown(self):
+
+        self.nav_frame.destroy()
+
+        self.nav_frame = ttk.Frame(self.score_frame, padding=5)
+        self.nav_frame.grid(row=1, column=0)
+
+        self.display_category()
+
+    def display_category(self):
+
+        self.display_frame.destroy()
+
+        self.display_frame = ttk.Frame(self.score_frame, padding=5)
+        self.display_frame.grid(row=0, column=0)
+
+        category_label = ttk.Label(self.display_frame,
+                                   text="Category: " + self.categories[self.category_index].name,
+                                   font=("Arial", 15))
+        category_label.grid()
+
+        category_score_label = ttk.Label(self.display_frame,
+                                         text="Score: " + str(self.categories[self.category_index].score) + "% - " +
+                                              str(self.categories[self.category_index].correct) + "/" +
+                                              str(self.categories[self.category_index].total),
+                                         font=("Arial", 15))
+        category_score_label.grid()
+
+        for question in self.categories[self.category_index].questions:
+            question_label = ttk.Label(self.display_frame, font=("Arial", 10))
+            if question.user_answer == question.correct_answer:
+                question_label.configure(text="\n" + question.text + ": Correct - " + question.user_answer)
+            else:
+                question_label.configure(text="\n" + question.text + ": Incorrect\nYour answer: " +
+                                              question.user_answer + "\nCorrect answer: " + question.correct_answer)
+            question_label.grid()
+
+        if self.category_index > 0 and self.prev_button is None:
+            self.prev_button = ttk.Button(self.nav_frame,
+                                          text="Previous",
+                                          command=self.prev_category)
+            self.prev_button.grid(row=0, column=0)
+
+        if self.category_index < len(self.categories) - 1 and self.next_button is None:
+            self.next_button = ttk.Button(self.nav_frame,
+                                          text="Next",
+                                          command=self.next_category)
+            self.next_button.grid(row=0, column=1)
+
+    def prev_category(self):
+        if self.category_index == 0:
+            mb.showwarning(title="Warning!",
+                           message="No previous category to display scores for!.")
+        else:
+            self.category_index -= 1
+            if self.category_index == 0:
+                self.prev_button.destroy()
+                self.prev_button = None
+            self.display_category()
+
+    def next_category(self):
+        if self.category_index == len(self.categories) - 1:
+            mb.showwarning(title="Warning!",
+                           message="No next category to display scores for!")
+        else:
+            self.category_index += 1
+            if self.category_index == len(self.categories) - 1:
+                self.next_button.destroy()
+                self.next_button = None
+            self.display_category()
+            
